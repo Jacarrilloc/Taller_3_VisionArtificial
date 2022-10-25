@@ -1,5 +1,5 @@
 CMakeFiles/taller_3.dir/taller_3.cxx.o: \
- /home/julian/Escritorio/Taller\ 3/taller_3.cxx \
+ /home/julian/Escritorio/Taller\ 3/Taller_3_VisionArtificial/taller_3.cxx \
  /usr/include/stdc-predef.h /usr/include/c++/11/iostream \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \

@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = -DITK_IO_FACTORY_REGISTER_MANAGER
 
-CXX_INCLUDES = -I"/home/julian/Escritorio/Taller 3/build/ITKFactoryRegistration" -I/usr/local/include/ITK-5.2 -isystem /usr/local/include/opencv4
+CXX_INCLUDES = -I"/home/julian/Escritorio/Taller 3/Taller_3_VisionArtificial/build/ITKFactoryRegistration" -I/usr/local/include/ITK-5.2 -isystem /usr/local/include/opencv4
 
 CXX_FLAGS = 
 
