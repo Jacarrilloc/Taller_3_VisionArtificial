@@ -1,0 +1,3 @@
+/home/julian/Escritorio/Taller 3/build/CMakeFiles/taller_3.dir
+/home/julian/Escritorio/Taller 3/build/CMakeFiles/edit_cache.dir
+/home/julian/Escritorio/Taller 3/build/CMakeFiles/rebuild_cache.dir
