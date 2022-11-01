@@ -4,7 +4,6 @@
 #include "opencv2/highgui.hpp"
 #include <stdio.h>
 #include <opencv2/opencv.hpp>
-#include <list>
 
 using namespace std;
 using namespace cv;
@@ -15,17 +14,39 @@ void guardarImagen(Mat imagen,String nombre)
   cout<<"-----IMAGEN " << nombre << ".png CREADA----"<<endl; 
 }
 
-void opcionManual(Mat src)
+Mat segmentacion(Mat imagen, int semilla[1])
 {
-  Mat mask;
-  inRange(src, Scalar(255, 255, 255), Scalar(255, 255, 255), mask);
-  src.setTo(Scalar(0, 0, 0), mask);
-  guardarImagen(src,"Sinfondo");
+  Mat resultado;
+  cout<<semilla[0]<<"-"<<semilla[1]<<endl;
+  return imagen;
 }
 
-void opcionAuto()
+void coordenadas(int ancho,int altura, Mat imagen)
 {
+  cout<<endl<<"--DATOS IMAGEN INGRESADA--"<<endl;
+  cout<<"Ancho: " << ancho <<endl<<"Altura: " << altura <<endl;
 
+  int anchoN,altoN;
+  cout<<endl<<"-Datos para semilla-"<<endl;
+  cout<<"Ingresar Ancho: ";
+  cin>>anchoN;
+  cout<<"Ingresar Alto: ";
+  cin>>altoN;
+
+  if((ancho < anchoN) || (altura < altoN))
+  {
+    cout<<endl<<"DATOS NO VALIDOS"<<endl;
+    coordenadas(ancho,altura,imagen);
+  }
+  else
+  {
+    cout<<endl<<"-coordenadas Validas-"<<endl;
+    int semilla[2];
+    semilla[0] = anchoN;
+    semilla[1] = altoN;
+    Mat salida = segmentacion(imagen,semilla);
+    guardarImagen(salida, "Resultado");
+  }
 }
 
 int main( int argc, char** argv )
@@ -53,34 +74,10 @@ int main( int argc, char** argv )
   }
   //Inicio de Programa
 
-  int opcion;
+  int ancho = image.size().width;
+  int altura = image.size().height;
 
-    Mat imagen_gris;
-
-  cv::cvtColor(image,imagen_gris, cv::COLOR_BGR2GRAY);
-  guardarImagen(imagen_gris,"engris");
-
-  while (opcion != 3)
-  { 
-
-  cout<<"SELECCIONE UNA OPCION:"<<endl;
-  cout<<"1.Semilla de forma Manual"<<endl;
-  cout<<"2.Semilla de forma Automatica"<<endl;
-  cout<<"3.Salir"<<endl;
-  cin >> opcion;
-  cout<<endl;
-
-  switch(opcion)
-  {
-    case 1: opcionManual(imagen_gris);
-            break;
-
-    case 2: opcionAuto();
-            break;
-
-    case 3:break;
-  }
-  }
-
-
+  Mat enGris;
+  cvtColor( image, enGris, COLOR_BGR2GRAY );
+  coordenadas(ancho,altura,enGris);
 }
